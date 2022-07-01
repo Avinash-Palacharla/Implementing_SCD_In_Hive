@@ -18,7 +18,12 @@ load data local infile '/home/saif/LFS/FF11/project/Day_$1.csv' into table proje
 update project.project_sql set curr_time = CURRENT_TIMESTAMP() + 1 where curr_time IS NULL;
 "
 
-sqoop import --connect jdbc:mysql://localhost:3306/project?useSSL=False --username root --password Welcome@123 --query 'select custid,username,quote_count,ip,entry_time,prp_1,prp_2,prp_3,ms,http_type,purchase_category,total_count,purchase_sub_category,http_info,status_code,curr_time from project_sql where $CONDITIONS' --split-by custid --target-dir /user/saif/HFS/output/project_1;
+sqoop import \
+--connect jdbc:mysql://localhost:3306/project?useSSL=False \
+--username root --password Welcome@123 \
+--query 'select custid,username,quote_count,ip,entry_time,prp_1,prp_2,prp_3,ms,http_type,purchase_category,total_count,purchase_sub_category,http_info,status_code,curr_time from project_sql where $CONDITIONS' \
+--split-by custid \
+--target-dir /user/saif/HFS/output/project_1;
 
 
 
@@ -62,5 +67,10 @@ insert into table project_hive.project_inter select * from project_hive.project_
 
 
 
-sqoop export --connect jdbc:mysql://localhost:3306/project?useSSL=False --table project_sql_exp --username root --password Welcome@123 --export-dir "/user/hive/warehouse/project_hive.db/project_inter" --input-fields-terminated-by ',';
+sqoop export \
+--connect jdbc:mysql://localhost:3306/project?useSSL=False \
+--table project_sql_exp \
+--username root --password Welcome@123 \
+--export-dir "/user/hive/warehouse/project_hive.db/project_inter" \
+--input-fields-terminated-by ',';
 
