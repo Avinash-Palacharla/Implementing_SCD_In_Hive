@@ -2,7 +2,12 @@ This is the project which is based on the concept of Hadoop, Sqoop, Hive, Sql an
 
 
 
-![WhatsApp Image 2022-06-17 at 4 51 17 PM](https://user-images.githubusercontent.com/107996709/175804497-a4308378-82fb-49bd-b51d-31200a566e77.jpeg)
+
+![178209807-4fbc8bee-8f79-4f3b-9356-6271991a2ab4](https://user-images.githubusercontent.com/107996709/178420632-5a2a237d-efea-4f8e-ba68-e9ace7271182.png)
+
+
+
+
 # Description
 
 In this project Data is sent by the client everyday in CSV format. So load all the data in MySQL everyday and then export it to HDFS. From there load the Data to hive
